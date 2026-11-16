@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palazzo | Roleplay</title>
+  <meta name="description" content="Palazzo - Organización de Roleplay">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏰</text></svg>">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="logo-circle" id="nav-logo-circle">
+        <span class="logo-fallback">P</span>
+      </div>
+      <span class="nav-title" id="nav-title">Palazzo</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active" data-tab="info">Información</a></li>
+      <li><a href="#" class="nav-link" data-tab="fotos">Fotos</a></li>
+      <li><a href="#" class="nav-link" data-tab="contacto">Contacto</a></li>
+      <li><a href="#" class="nav-link admin-link" data-tab="admin">⚙ Admin</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menú">☰</button>
+  </nav>
+
+  <!-- TAB: INFORMACIÓN -->
+  <section id="tab-info" class="tab active">
+    <div class="hero">
+      <div class="hero-logo" id="hero-logo">
+        <span class="hero-logo-placeholder">P</span>
+      </div>
+      <h1 class="hero-title" id="hero-title">Palazzo</h1>
+      <p class="hero-sub" id="hero-sub">Roleplay · Elite</p>
+      <div class="neon-line"></div>
+    </div>
+
+    <div class="info-grid" id="info-grid">
+      <!-- Cards rendered by JS -->
+    </div>
+  </section>
+
+  <!-- TAB: FOTOS -->
+  <section id="tab-fotos" class="tab">
+    <div class="section-header">
+      <h2 class="section-title">Galería</h2>
+      <p class="section-sub">Momentos de Palazzo</p>
+    </div>
+    <div class="photos-wrapper">
+      <div class="photos-grid" id="photos-grid">
+        <div class="no-photos-msg" id="no-photos">No hay fotos aún. El administrador puede añadirlas desde el panel.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB: CONTACTO -->
+  <section id="tab-contacto" class="tab">
+    <div class="section-header">
+      <h2 class="section-title">Contacto</h2>
+    </div>
+    <div class="contacto-grid">
+      <div class="contacto-card">
+        <div class="card-icon">🎯</div>
+        <h3 id="postular-title">Postular a Palazzo</h3>
+        <p id="postular-text">¿Quieres formar parte de Palazzo? Demuestra lealtad, respeto y buen roleplay.</p>
+        <ul class="req-list" id="postular-reqs">
+          <li>✔ Nivel medio de roleplay</li>
+          <li>✔ Disponibilidad</li>
+          <li>✔ Lealtad y respeto</li>
+        </ul>
+        <a href="#" class="btn-neon" id="postular-btn" target="_blank" rel="noopener">Postular</a>
+      </div>
+      <div class="contacto-card">
+        <div class="card-icon">👑</div>
+        <h3 id="owner-name">Owner</h3>
+        <p id="owner-role">Fundador</p>
+        <p id="owner-text">Para asuntos importantes contacta al owner.</p>
+        <a href="#" class="btn-neon" id="owner-btn" target="_blank" rel="noopener">Contactar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB: ADMIN -->
+  <section id="tab-admin" class="tab">
+    <!-- Login -->
+    <div class="admin-login" id="admin-login">
+      <div class="login-box">
+        <div class="login-logo">🔒</div>
+        <h2>Panel de Administración</h2>
+        <p>Acceso restringido · Palazzo</p>
+        <input type="password" id="admin-pass" placeholder="Contraseña de administrador" autocomplete="current-password">
+        <button class="btn-neon" id="login-btn">Entrar</button>
+        <p class="login-error" id="login-error"></p>
+        <p class="login-hint">Usuario demo: admin · Pass: Palazzo2026!</p>
+      </div>
+    </div>
+
+    <!-- Panel -->
+    <div class="admin-panel" id="admin-panel" style="display:none">
+      <div class="admin-header">
+        <h2>⚙ Administración Palazzo</h2>
+        <button class="btn-danger" id="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-admin="general">General</button>
+        <button class="admin-tab-btn" data-admin="cards">Tarjetas</button>
+        <button class="admin-tab-btn" data-admin="photos">Fotos</button>
+        <button class="admin-tab-btn" data-admin="contacto">Contacto</button>
+        <button class="admin-tab-btn" data-admin="security">Seguridad</button>
+      </div>
+
+      <!-- General -->
+      <div class="admin-section" id="admin-general">
+        <h3>Configuración General</h3>
+        <div class="form-group">
+          <label>Nombre / Título</label>
+          <input type="text" id="edit-nav-title" placeholder="Palazzo">
+        </div>
+        <div class="form-group">
+          <label>Subtítulo</label>
+          <input type="text" id="edit-hero-sub" placeholder="Roleplay · Elite">
+        </div>
+        <div class="form-group">
+          <label>URL del Logo (opcional)</label>
+          <input type="url" id="edit-logo-url" placeholder="https://...">
+        </div>
+        <button class="btn-neon" id="save-general-btn">Guardar cambios</button>
+        <span class="save-msg" id="save-general-msg"></span>
+      </div>
+
+      <!-- Cards -->
+      <div class="admin-section" id="admin-cards" style="display:none">
+        <h3>Editar Tarjetas de Información</h3>
+        <div id="cards-editor"></div>
+      </div>
+
+      <!-- Photos -->
+      <div class="admin-section" id="admin-photos" style="display:none">
+        <h3>Galería de Fotos</h3>
+        <div class="drop-zone" id="drop-zone">
+          <p>📁 Arrastra imágenes aquí o haz clic para seleccionar</p>
+          <input type="file" id="photo-input" accept="image/*" multiple hidden>
+        </div>
+        <div class="form-group" style="margin-top:16px">
+          <label>O pega una URL de imagen</label>
+          <div style="display:flex;gap:10px">
+            <input type="url" id="photo-url" placeholder="https://ejemplo.com/imagen.jpg">
+            <button class="btn-neon" id="add-url-btn">Añadir</button>
+          </div>
+        </div>
+        <div id="admin-photos-list" class="admin-photos-list"></div>
+      </div>
+
+      <!-- Contacto -->
+      <div class="admin-section" id="admin-contacto" style="display:none">
+        <h3>Sección Contacto</h3>
+        <div class="form-group">
+          <label>Título Postulación</label>
+          <input type="text" id="edit-postular-title">
+        </div>
+        <div class="form-group">
+          <label>Texto Postulación</label>
+          <textarea id="edit-postular-text"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Requisitos (uno por línea)</label>
+          <textarea id="edit-postular-reqs"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Link botón Postular</label>
+          <input type="url" id="edit-postular-link">
+        </div>
+        <div class="form-group">
+          <label>Nombre Owner</label>
+          <input type="text" id="edit-owner-name">
+        </div>
+        <div class="form-group">
+          <label>Rol Owner</label>
+          <input type="text" id="edit-owner-role">
+        </div>
+        <div class="form-group">
+          <label>Texto Owner</label>
+          <textarea id="edit-owner-text"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Link Owner</label>
+          <input type="url" id="edit-owner-link">
+        </div>
+        <button class="btn-neon" id="save-contacto-btn">Guardar Contacto</button>
+        <span class="save-msg" id="save-contacto-msg"></span>
+      </div>
+
+      <!-- Security -->
+      <div class="admin-section" id="admin-security" style="display:none">
+        <h3>Seguridad</h3>
+        <p style="color:#8f8;margin-bottom:16px;font-size:14px">
+          Esta versión usa almacenamiento local del navegador para la demo. 
+          Para producción real se recomienda conectar Firebase Auth + reglas de seguridad y un backend (como el original).
+        </p>
+        <div class="form-group">
+          <label>Cambiar contraseña de admin (solo esta sesión / local)</label>
+          <input type="password" id="new-admin-pass" placeholder="Nueva contraseña">
+        </div>
+        <button class="btn-neon" id="change-pass-btn">Cambiar contraseña</button>
+        <span class="save-msg" id="save-pass-msg"></span>
+        <div style="margin-top:24px;padding:16px;background:#0d1f0d;border:1px solid #00ff6633;border-radius:10px">
+          <strong style="color:#00ff66">Medidas incluidas:</strong>
+          <ul style="color:#aaa;font-size:13px;margin-top:8px;line-height:1.7">
+            <li>• Login con contraseña (no se guarda en texto plano en el código)</li>
+            <li>• Sesión solo en el navegador actual</li>
+            <li>• Cierre de sesión limpio</li>
+            <li>• Sanitización básica de HTML en editores</li>
+            <li>• Tema full verde (sin rojo de cartel)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+    <span class="lightbox-close">✕</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>© 2026 Palazzo</span>
+    <span class="footer-sep">·</span>
+    <span>Improved version</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
