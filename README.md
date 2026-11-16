@@ -1,35 +1,14 @@
 # Palazzo
 
-Versión mejorada y rebranded del sitio original (tema **full verde**).
+Sitio Roleplay con tema full verde + **Supabase** (datos e imágenes en la nube).
 
-## Características
+## Admin
+Contraseña: `palazzo`
 
-- Tema completamente verde (sin rojo)
-- Nombre: **Palazzo**
-- Panel de administración con login
-- Editor de tarjetas de información
-- Galería de fotos con subida (drag & drop + URL)
-- Sección de contacto editable
-- Cambio de contraseña de admin (local)
-- Diseño responsive
-- Lightbox para fotos
+## Stack
+- HTML/CSS/JS estático
+- Supabase (tabla `palazzo_data`, `photos` + Storage bucket `photos`)
 
-## Demo Admin
-
-- **Contraseña por defecto**: `palazzo`
-
-Los cambios se guardan en el navegador (localStorage). Para producción real se recomienda conectar Firebase + backend como el original.
-
-## Despliegue
-
-Sitio estático. Funciona en Vercel, Netlify, GitHub Pages, etc.
-
-```bash
-# Solo necesita los archivos:
-# index.html, style.css, app.js
-```
-
-## Créditos
-
-Basado en la estructura original de Cartel de la Frontera (CDF) / HispanLife RP.  
-Mejorado y rebranded como **Palazzo**.
+## URLs
+- https://palazzo-sage.vercel.app
+- https://github.com/srcrispi/palazzo
